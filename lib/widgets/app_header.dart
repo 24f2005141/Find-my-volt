@@ -52,18 +52,27 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 const SizedBox(width: 4),
               ] else ...[
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryContainer.withOpacity(0.18),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.bolt,
-                      color: AppColors.primary,
-                      size: 22,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/images/app_logo.png',
+                    width: 34,
+                    height: 34,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryContainer.withValues(alpha: 0.18),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Center(
+                        child: Icon(
+                          Icons.bolt,
+                          color: AppColors.primary,
+                          size: 22,
+                        ),
+                      ),
                     ),
                   ),
                 ),
