@@ -1,0 +1,386 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Find My Volt - Production AWS Free Tier Deployment Template
+  Deploys the SQLite database and Python REST API server on an Amazon EC2 t2.micro / t3.micro instance
+  with a 30 GB gp3 persistent EBS volume (100% covered under the 12-Month AWS Free Tier).
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t3.micro
+      - t4g.micro
+    Description: EC2 Instance Type eligible for AWS Free Tier (750 hours/month free).
+
+  KeyName:
+    Type: String
+    Default: ''
+    Description: (Optional) Name of an existing EC2 KeyPair to enable SSH access.
+
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64'
+    Description: Automatically fetches the latest official Amazon Linux 2023 AMI for the selected region.
+
+Resources:
+  # -------------------------------------------------------------
+  # Networking: VPC, Internet Gateway, Subnet, Route Table
+  # -------------------------------------------------------------
+  VoltVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: FindMyVolt-VPC
+
+  VoltInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: FindMyVolt-IGW
+
+  VoltVPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VoltVPC
+      InternetGatewayId: !Ref VoltInternetGateway
+
+  VoltPublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VoltVPC
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: true
+      AvailabilityZone: !Select [0, !GetAZs '']
+      Tags:
+        - Key: Name
+          Value: FindMyVolt-PublicSubnet
+
+  VoltRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VoltVPC
+      Tags:
+        - Key: Name
+          Value: FindMyVolt-PublicRouteTable
+
+  VoltPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: VoltVPCGatewayAttachment
+    Properties:
+      RouteTableId: !Ref VoltRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref VoltInternetGateway
+
+  VoltSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VoltPublicSubnet
+      RouteTableId: !Ref VoltRouteTable
+
+  # -------------------------------------------------------------
+  # Security Group (HTTP 80, API 5000, SSH 22)
+  # -------------------------------------------------------------
+  VoltSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for Find My Volt API Backend and Database
+      VpcId: !Ref VoltVPC
+      SecurityGroupIngress:
+        # Standard HTTP
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+          Description: Allow public HTTP traffic
+        # Backend API direct port
+        - IpProtocol: tcp
+          FromPort: 5000
+          ToPort: 5000
+          CidrIp: 0.0.0.0/0
+          Description: Allow direct Find My Volt API traffic
+        # SSH access
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+          Description: Allow SSH management
+      SecurityGroupEgress:
+        - IpProtocol: -1
+          CidrIp: 0.0.0.0/0
+          Description: Allow all outbound traffic
+      Tags:
+        - Key: Name
+          Value: FindMyVolt-SecurityGroup
+
+  # -------------------------------------------------------------
+  # EC2 Free Tier Instance with Persistent EBS Storage
+  # -------------------------------------------------------------
+  VoltInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref LatestAmiId
+      SubnetId: !Ref VoltPublicSubnet
+      SecurityGroupIds:
+        - !Ref VoltSecurityGroup
+      KeyName: !If [HasKeyName, !Ref KeyName, !Ref 'AWS::NoValue']
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 30 # 30 GB Free Tier maximum
+            VolumeType: gp3
+            DeleteOnTermination: false # Preserve database storage on termination
+            Encrypted: true
+      Tags:
+        - Key: Name
+          Value: FindMyVolt-Backend-FreeTier
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -e
+
+          # Update system & install Python 3, SQLite
+          dnf update -y
+          dnf install -y python3 python3-pip sqlite iptables-services
+
+          # Configure iptables to port-forward port 80 -> port 5000
+          iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 5000
+          iptables-save > /etc/sysconfig/iptables || true
+          systemctl enable iptables || true
+          systemctl start iptables || true
+
+          # Create app directory
+          mkdir -p /opt/find-my-volt
+          cd /opt/find-my-volt
+
+          # Extract complete backend payload
+          cat << 'PAYLOAD_EOF' | base64 -d | tar -xz -C /opt/find-my-volt
+          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
+          PAYLOAD_EOF
+
+          # Create systemd service
+          cat << 'EOF' > /etc/systemd/system/find-my-volt.service
+          [Unit]
+          Description=Find My Volt REST API Server Daemon
+          After=network.target
+
+          [Service]
+          Type=simple
+          User=root
+          WorkingDirectory=/opt/find-my-volt
+          ExecStart=/usr/bin/python3 /opt/find-my-volt/backend/server.py
+          Restart=always
+          RestartSec=5
+          Environment=PORT=5000
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+
+          # Enable and start daemon
+          systemctl daemon-reload
+          systemctl enable find-my-volt.service
+          systemctl start find-my-volt.service
+
+Conditions:
+  HasKeyName: !Not [!Equals [!Ref KeyName, '']]
+
+Outputs:
+  InstanceId:
+    Description: Instance ID of the deployed EC2 Free Tier Server
+    Value: !Ref VoltInstance
+
+  PublicIp:
+    Description: Public IPv4 Address
+    Value: !GetAtt VoltInstance.PublicIp
+
+  BackendApiUrl:
+    Description: Direct REST API Base URL
+    Value: !Sub 'http://${VoltInstance.PublicIp}:5000/api'
+
+  StandardHttpApiUrl:
+    Description: Standard Port 80 HTTP API Base URL
+    Value: !Sub 'http://${VoltInstance.PublicIp}/api'
+
+  HealthCheckUrl:
+    Description: Public Health Check URL
+    Value: !Sub 'http://${VoltInstance.PublicIp}:5000/api/health'

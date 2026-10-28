@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#a5f0e9", "secondary-container": "#a2ede6", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#e2e2e7", "on-error": "#ffffff", "on-error-container": "#93000a", "surface-tint": "#006e28", "inverse-surface": "#2f3034", "inverse-on-surface": "#f0f0f4", "surface-container-highest": "#e2e2e6", "on-surface": "#1a1c1f", "surface-bright": "#f9f9fd", "on-tertiary-fixed-variant": "#45474b", "tertiary-container": "#adaeb3", "tertiary": "#5d5e63", "surface-dim": "#d9dade", "on-tertiary-fixed": "#1a1c20", "surface-container-low": "#f3f3f7", "on-primary-container": "#004d1a", "background": "#f9f9fd", "error-container": "#ffdad6", "secondary": "#146964", "on-tertiary": "#ffffff", "surface-container": "#ededf2", "primary-fixed-dim": "#53e16f", "outline": "#6d7b6b", "surface": "#f9f9fd", "on-background": "#1a1c1f", "surface-variant": "#e2e2e6", "on-primary-fixed": "#002107", "on-surface-variant": "#3d4a3c", "primary": "#006e28", "error": "#ba1a1a", "primary-container": "#34c759", "on-tertiary-container": "#404246", "surface-container-high": "#e8e8ec", "on-primary": "#ffffff", "primary-fixed": "#72fe88", "on-secondary-container": "#1b6e69", "tertiary-fixed-dim": "#c6c6cb", "on-secondary-fixed-variant": "#00504c", "inverse-primary": "#53e16f", "outline-variant": "#bccbb8", "on-primary-fixed-variant": "#00531c", "secondary-fixed-dim": "#89d4cd", "on-secondary-fixed": "#00201e" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.25rem", "gutter": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }], "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }], "headline-sm": ["18px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }], "body-sm": ["12px", { lineHeight: "16px", letterSpacing: "+0.005em", fontWeight: "400" }], "display-hero-mobile": ["32px", { lineHeight: "38px", letterSpacing: "-0.025em", fontWeight: "700" }], "display-hero": ["40px", { lineHeight: "48px", letterSpacing: "-0.03em", fontWeight: "700" }], "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "label-lg": ["15px", { lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "+0.04em", fontWeight: "600" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f9f9fd;color:#1a1c1f;font-family:'Plus Jakarta Sans',sans-serif;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Finder my Charger Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaFr6_f7rrPSVLrEnWL7EtY7Kr2unkX4FkEZGurnMppHxUmpFTo-o0tdPy3oPI_mJg0Lomzl8pBr_5wC_Upn_VEi4Wv5tUvfbeOmyXIfk1fZNFJLfLs3zk1Qj1O_ET4AUDuXl5iLf5jVvY73CtMOSyTmilYhLw8RsBbhrWGh9hpwdLWIiFUUiuiKa8zKr6bJ3W-9gy2T36vqN2PpiifeM5XuVDXNJoEsZ3wfB6OqNK"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary tracking-wider uppercase">Finder My Charger</span><span class="font-headline-sm text-headline-sm text-on-surface">Explore</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined">notifications</span></button><a class="w-11 h-11 flex items-center justify-center" data-path="profile" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO5ZiPaX53wSN6udXYa7Wl7PDaKJKd83ZvIKL75YYh1nPubpsTqdkNMUGMOcyrRLEkvU9gkZksTPEnoRYRBB1AIPn7Bz6IcsbtmdF6mcvJb9VoaW-vcMuDO1cGeLi8xH2aC6BoVZIglp3SqggfoLRPcTsbmjfIFEezuEHGYPZ5TNCKOJ5Y363OP3TKMNZkOTBFbr8pCG2KlB-mKZ1FB7P0aR8qNXJtd4I3i4zIFOI"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Navigation & Flow Indicator -->
+<div class="px-margin pt-space-xs pb-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface shadow-sm active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Reserve Charging Slot</h1>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Step 1 of 2: Time &amp; Duration</span>
+</div>
+<button aria-label="Booking Help" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant shadow-sm active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+<!-- Stepper Track -->
+<div class="w-full flex items-center gap-space-xs mt-space-xs px-space-xs">
+<div class="h-1.5 flex-1 rounded-full bg-primary-container shadow-[0_0_12px_rgba(52,199,89,0.35)]"></div>
+<div class="h-1.5 flex-1 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- Charger Banner Card (Compact Luminescent Glass) -->
+<div class="px-margin my-space-xs">
+<div class="bg-surface-container-lowest/90 backdrop-blur-2xl rounded-2xl p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/40 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">home_pin</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Sharma Villa P2P</h2>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Indiranagar, Bengaluru • 7.4 kW Type-2</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">₹140<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/hr</span></div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 mt-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            Private Bay
+          </div>
+</div>
+</div>
+<!-- Instant Approval Strip -->
+<div class="mt-space-sm pt-space-sm bg-surface-container-low/70 -mx-space-md -mb-space-md px-space-md py-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-sm text-label-sm font-semibold">Instant Confirmation (No Host Waiting)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Host: Vikram S.</span>
+</div>
+</div>
+</div>
+<!-- Date Selector (Horizontal Scroll) -->
+<div class="mt-space-sm">
+<div class="px-margin flex items-center justify-between mb-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Select Date</span>
+<span class="font-label-sm text-label-sm text-secondary">October 2024</span>
+</div>
+<div class="flex gap-space-xs overflow-x-auto px-margin pb-space-xs scrollbar-none snap-x" id="datePicker">
+<!-- Today (Selected) -->
+<button class="date-tab snap-start shrink-0 flex flex-col items-center justify-center w-[4.75rem] h-[5.25rem] rounded-2xl bg-on-surface text-surface-container-lowest shadow-md transition-all scale-100" type="button">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-surface-variant/80">Today</span>
+<span class="font-headline-lg text-headline-lg font-bold leading-tight mt-0.5">24</span>
+<span class="font-label-sm text-label-sm opacity-90">Thu</span>
+</button>
+<!-- Tomorrow -->
+<button class="date-tab snap-start shrink-0 flex flex-col items-center justify-center w-[4.75rem] h-[5.25rem] rounded-2xl bg-surface-container-lowest/85 text-on-surface hover:bg-surface-container shadow-sm transition-all" type="button">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Tom</span>
+<span class="font-headline-lg text-headline-lg font-bold leading-tight mt-0.5">25</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fri</span>
+</button>
+<!-- Sat -->
+<button class="date-tab snap-start shrink-0 flex flex-col items-center justify-center w-[4.75rem] h-[5.25rem] rounded-2xl bg-surface-container-lowest/85 text-on-surface hover:bg-surface-container shadow-sm transition-all" type="button">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Sat</span>
+<span class="font-headline-lg text-headline-lg font-bold leading-tight mt-0.5">26</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct</span>
+</button>
+<!-- Sun -->
+<button class="date-tab snap-start shrink-0 flex flex-col items-center justify-center w-[4.75rem] h-[5.25rem] rounded-2xl bg-surface-container-lowest/85 text-on-surface hover:bg-surface-container shadow-sm transition-all" type="button">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Sun</span>
+<span class="font-headline-lg text-headline-lg font-bold leading-tight mt-0.5">27</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct</span>
+</button>
+<!-- Mon -->
+<button class="date-tab snap-start shrink-0 flex flex-col items-center justify-center w-[4.75rem] h-[5.25rem] rounded-2xl bg-surface-container-lowest/85 text-on-surface hover:bg-surface-container shadow-sm transition-all" type="button">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Mon</span>
+<span class="font-headline-lg text-headline-lg font-bold leading-tight mt-0.5">28</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct</span>
+</button>
+</div>
+</div>
+<!-- Vehicle & Battery Target Module -->
+<div class="px-margin mt-space-md">
+<div class="bg-surface-container-lowest/90 backdrop-blur-xl rounded-2xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-xl bg-primary-fixed-dim/30 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Tata Nexon EV Max</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">KA 03 MM 8821 • 40.5 kWh</div>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-secondary font-semibold px-2 py-1 rounded-lg hover:bg-secondary-container/20" type="button">Change</button>
+</div>
+<!-- Battery Estimation Visual Bar -->
+<div class="bg-surface-container-low rounded-xl p-space-sm mt-space-xs flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Current:</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">28%</span>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target:</span>
+<span class="font-label-md text-label-md font-bold text-primary">85%</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed-dim/40 text-on-primary-container font-semibold">+23 kWh</span>
+</div>
+<!-- Visual Progress Gauge with Glow -->
+<div class="relative w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 bg-tertiary w-[28%] rounded-l-full"></div>
+<div class="absolute left-[28%] top-0 bottom-0 bg-primary-container w-[57%] shadow-[0_0_10px_rgba(52,199,89,0.5)] flex items-center justify-end pr-1">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest animate-ping"></span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant pt-0.5">
+<span class="font-body-sm text-body-sm">Needs ~3h 10m at 7.4 kW AC</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Recommending 2 to 4 hr slot</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Time Slot Grid -->
+<div class="px-margin mt-space-md">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Available Slots • Today</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2-hour standard</span>
+</div>
+<!-- Color Legend -->
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 mb-space-sm px-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_6px_rgba(52,199,89,0.4)]"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_6px_rgba(0,110,40,0.5)]"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Selected</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error-container"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Host Reserved</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-dim"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Booked</span>
+</div>
+</div>
+<!-- Time Slots List -->
+<div class="flex flex-col gap-space-xs" id="slotContainer">
+<!-- Slot 1: Available -->
+<button class="slot-item w-full p-space-md rounded-2xl bg-surface-container-lowest/80 text-left shadow-sm flex items-center justify-between transition-all active:scale-[0.99] hover:bg-surface-container-lowest" type="button">
+<div class="flex items-center gap-space-md">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">09:00 AM – 11:00 AM</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Morning Quiet Window • ₹140/hr</div>
+</div>
+</div>
+<span class="font-label-md text-label-md px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-semibold">Select</span>
+</button>
+<!-- Slot 2: Blocked by Host -->
+<div class="w-full p-space-md rounded-2xl bg-error-container/30 text-left flex items-center justify-between opacity-80 cursor-not-allowed">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-3 h-3 rounded-full bg-error shrink-0"></div>
+<div class="min-w-0">
+<div class="font-headline-sm text-headline-sm text-on-surface/70 font-semibold line-through">11:00 AM – 01:00 PM</div>
+<div class="font-body-sm text-body-sm text-error truncate">Blocked by Host (Personal Car Charging)</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-lg bg-surface-container-lowest/60 text-error font-medium shrink-0">Unavailable</span>
+</div>
+<!-- Slot 3: SELECTED SLOT -->
+<div class="slot-item selected-slot w-full p-space-md rounded-2xl bg-surface-container-lowest text-left shadow-[0_4px_24px_-2px_rgba(52,199,89,0.35)] flex items-center justify-between relative overflow-hidden ring-2 ring-primary-container">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary"></div>
+<div class="flex items-center gap-space-md pl-1">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">01:00 PM – 03:00 PM</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed-dim/40 text-on-primary-container font-label-sm text-label-sm font-semibold">2 hrs</span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary font-medium">Selected Slot • ₹280 Base Total</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-primary font-bold">Active</span>
+</div>
+</div>
+<!-- Slot 4: Available -->
+<button class="slot-item w-full p-space-md rounded-2xl bg-surface-container-lowest/80 text-left shadow-sm flex items-center justify-between transition-all active:scale-[0.99] hover:bg-surface-container-lowest" type="button">
+<div class="flex items-center gap-space-md">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">03:00 PM – 05:00 PM</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Afternoon Solar Hour • ₹140/hr</div>
+</div>
+</div>
+<span class="font-label-md text-label-md px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-semibold">Select</span>
+</button>
+<!-- Slot 5: Booked by Another EV -->
+<div class="w-full p-space-md rounded-2xl bg-surface-container-low text-left flex items-center justify-between opacity-60 cursor-not-allowed">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-3 h-3 rounded-full bg-tertiary-container shrink-0"></div>
+<div class="min-w-0">
+<div class="font-headline-sm text-headline-sm text-tertiary font-medium">05:00 PM – 07:00 PM</div>
+<div class="font-body-sm text-body-sm text-tertiary truncate">Reserved by MG ZS EV driver</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-lg bg-surface-container text-tertiary font-medium shrink-0">Booked</span>
+</div>
+<!-- Slot 6: Available -->
+<button class="slot-item w-full p-space-md rounded-2xl bg-surface-container-lowest/80 text-left shadow-sm flex items-center justify-between transition-all active:scale-[0.99] hover:bg-surface-container-lowest" type="button">
+<div class="flex items-center gap-space-md">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">07:00 PM – 09:00 PM</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Evening Slot • ₹140/hr</div>
+</div>
+</div>
+<span class="font-label-md text-label-md px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-semibold">Select</span>
+</button>
+</div>
+</div>
+<!-- Booking Summary & Price Breakdown Card -->
+<div class="px-margin mt-space-md">
+<div class="bg-surface-container-lowest/95 backdrop-blur-2xl rounded-2xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Fare Breakdown</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">Fair P2P Pricing</span>
+</div>
+<div class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+<div class="flex items-center justify-between">
+<span>Charging Slot (1:00 PM – 3:00 PM)</span>
+<span class="text-on-surface font-medium">2 Hours</span>
+</div>
+<div class="flex items-center justify-between">
+<span>Host Base Tariff (₹140 × 2 hrs)</span>
+<span class="text-on-surface font-medium">₹280</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span>Platform &amp; Green Grid Support</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">info</span>
+</div>
+<span class="text-on-surface font-medium">₹20</span>
+</div>
+</div>
+<div class="h-px bg-surface-container my-1"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Total Estimated Amount</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Includes all taxes &amp; host electricity</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">₹300</div>
+</div>
+<!-- Trust & Free Cancellation Pill -->
+<div class="mt-space-xs p-space-sm rounded-xl bg-surface-container-low flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Free cancellation up to 1 hr before start</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Guaranteed host bay reservation with 100% refund guarantee.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Host Etiquette & Access Note -->
+<div class="px-margin mt-space-sm mb-space-lg">
+<div class="p-space-sm rounded-xl bg-surface-container-lowest/80 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">garage_home</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Drive-in gate access code revealed upon payment</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">lock</span>
+</div>
+</div>
+<!-- Sticky Bottom Checkout Bar (Above Nav Capsule) -->
+<div class="sticky bottom-20 z-40 w-full px-margin pb-2 pt-2">
+<div class="bg-surface-container-lowest/90 backdrop-blur-2xl rounded-2xl p-space-sm shadow-[0_12px_32px_-4px_rgba(23,25,28,0.12)] flex items-center justify-between gap-space-md">
+<div class="flex flex-col pl-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">₹300</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">/ 2 hrs</span>
+</div>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+<span>Slot held for 09:48</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="h-[52px] px-space-lg rounded-2xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(52,199,89,0.35)] active:scale-95 transition-transform hover:opacity-95" type="button">
+<span>Proceed to Checkout</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction for Date selector
+  document.querySelectorAll('.date-tab').forEach((tab) => {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.date-tab').forEach((el) => {
+        el.classList.remove('bg-on-surface', 'text-surface-container-lowest', 'shadow-md');
+        el.classList.add('bg-surface-container-lowest/85', 'text-on-surface', 'shadow-sm');
+        const labels = el.querySelectorAll('span');
+        if (labels[0]) labels[0].classList.add('text-on-surface-variant');
+        if (labels[2]) labels[2].classList.add('text-on-surface-variant');
+      });
+      this.classList.remove('bg-surface-container-lowest/85', 'text-on-surface', 'shadow-sm');
+      this.classList.add('bg-on-surface', 'text-surface-container-lowest', 'shadow-md');
+      const activeLabels = this.querySelectorAll('span');
+      if (activeLabels[0]) activeLabels[0].classList.remove('text-on-surface-variant');
+      if (activeLabels[2]) activeLabels[2].classList.remove('text-on-surface-variant');
+    });
+  });
+</script></main><div class="fixed bottom-0 w-full z-50 pointer-events-none pb-safe"><nav class="pointer-events-auto mx-auto mb-space-md max-w-sm w-[calc(100%-2.5rem)] h-16 bg-surface-container-lowest/85 backdrop-blur-xl rounded-full shadow-[0_12px_32px_-4px_rgba(23,25,28,0.08),0_2px_6px_rgba(23,25,28,0.04)] px-space-xs flex items-center justify-around" data-active-classes="text-primary bg-primary-container/15 font-semibold"><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm mt-0.5">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="bookings" href="#"><span class="material-symbols-outlined text-[22px]">calendar_today</span><span class="font-label-sm text-label-sm mt-0.5">Bookings</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="my-chargers" href="#"><span class="material-symbols-outlined text-[22px]">ev_charger</span><span class="font-label-sm text-label-sm mt-0.5">Chargers</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="earnings" href="#"><span class="material-symbols-outlined text-[22px]">currency_rupee</span><span class="font-label-sm text-label-sm mt-0.5">Earnings</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-label-sm text-label-sm mt-0.5">Profile</span></a></nav></div></body></html>

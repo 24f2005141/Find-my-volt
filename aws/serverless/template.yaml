@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Find My Volt - 100% Free Forever Serverless Backend
+  Deploys API Gateway HTTP API + AWS Lambda Function (1M requests/mo free forever).
+
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 256
+    Runtime: python3.12
+
+Resources:
+  VoltHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowMethods:
+          - GET
+          - POST
+          - PATCH
+          - PUT
+          - DELETE
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+        AllowOrigins:
+          - '*'
+
+  FindMyVoltFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../..
+      Handler: aws/serverless/lambda_function.handler
+      Description: Find My Volt REST API and SQLite Engine
+      Events:
+        RootApi:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref VoltHttpApi
+            Path: /api/{proxy+}
+            Method: ANY
+        HealthApi:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref VoltHttpApi
+            Path: /api/health
+            Method: GET
+
+Outputs:
+  ApiUrl:
+    Description: Base URL for Find My Volt API
+    Value: !Sub 'https://${VoltHttpApi}.execute-api.${AWS::Region}.amazonaws.com/api'
+
+  HealthCheck:
+    Description: Health Check URL
+    Value: !Sub 'https://${VoltHttpApi}.execute-api.${AWS::Region}.amazonaws.com/api/health'

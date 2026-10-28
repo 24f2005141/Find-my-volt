@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#a5f0e9", "secondary-container": "#a2ede6", "on-secondary": "#ffffff", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#e2e2e7", "on-error": "#ffffff", "on-error-container": "#93000a", "surface-tint": "#006e28", "inverse-surface": "#2f3034", "inverse-on-surface": "#f0f0f4", "surface-container-highest": "#e2e2e6", "on-surface": "#1a1c1f", "surface-bright": "#f9f9fd", "on-tertiary-fixed-variant": "#45474b", "tertiary-container": "#adaeb3", "tertiary": "#5d5e63", "surface-dim": "#d9dade", "on-tertiary-fixed": "#1a1c20", "surface-container-low": "#f3f3f7", "on-primary-container": "#004d1a", "background": "#f9f9fd", "error-container": "#ffdad6", "secondary": "#146964", "on-tertiary": "#ffffff", "surface-container": "#ededf2", "primary-fixed-dim": "#53e16f", "outline": "#6d7b6b", "surface": "#f9f9fd", "on-background": "#1a1c1f", "surface-variant": "#e2e2e6", "on-primary-fixed": "#002107", "on-surface-variant": "#3d4a3c", "primary": "#006e28", "error": "#ba1a1a", "primary-container": "#34c759", "on-tertiary-container": "#404246", "surface-container-high": "#e8e8ec", "on-primary": "#ffffff", "primary-fixed": "#72fe88", "on-secondary-container": "#1b6e69", "tertiary-fixed-dim": "#c6c6cb", "on-secondary-fixed-variant": "#00504c", "inverse-primary": "#53e16f", "outline-variant": "#bccbb8", "on-primary-fixed-variant": "#00531c", "secondary-fixed-dim": "#89d4cd", "on-secondary-fixed": "#00201e" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.25rem", "gutter": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }], "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }], "headline-sm": ["18px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }], "body-sm": ["12px", { lineHeight: "16px", letterSpacing: "+0.005em", fontWeight: "400" }], "display-hero-mobile": ["32px", { lineHeight: "38px", letterSpacing: "-0.025em", fontWeight: "700" }], "display-hero": ["40px", { lineHeight: "48px", letterSpacing: "-0.03em", fontWeight: "700" }], "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "label-lg": ["15px", { lineHeight: "20px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "+0.04em", fontWeight: "600" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f9f9fd;color:#1a1c1f;font-family:'Plus Jakarta Sans',sans-serif;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Finder my Charger Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UaFr6_f7rrPSVLrEnWL7EtY7Kr2unkX4FkEZGurnMppHxUmpFTo-o0tdPy3oPI_mJg0Lomzl8pBr_5wC_Upn_VEi4Wv5tUvfbeOmyXIfk1fZNFJLfLs3zk1Qj1O_ET4AUDuXl5iLf5jVvY73CtMOSyTmilYhLw8RsBbhrWGh9hpwdLWIiFUUiuiKa8zKr6bJ3W-9gy2T36vqN2PpiifeM5XuVDXNJoEsZ3wfB6OqNK"/><div class="flex flex-col"><span class="font-label-sm text-label-sm text-secondary tracking-wider uppercase">Finder My Charger</span><span class="font-headline-sm text-headline-sm text-on-surface">Explore</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined">notifications</span></button><a class="w-11 h-11 flex items-center justify-center" data-path="profile" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO5ZiPaX53wSN6udXYa7Wl7PDaKJKd83ZvIKL75YYh1nPubpsTqdkNMUGMOcyrRLEkvU9gkZksTPEnoRYRBB1AIPn7Bz6IcsbtmdF6mcvJb9VoaW-vcMuDO1cGeLi8xH2aC6BoVZIglp3SqggfoLRPcTsbmjfIFEezuEHGYPZ5TNCKOJ5Y363OP3TKMNZkOTBFbr8pCG2KlB-mKZ1FB7P0aR8qNXJtd4I3i4zIFOI"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-28 bg-surface"><div class="flex flex-col w-full relative">
+<!-- Micro Top Context Header -->
+<div class="px-margin pt-2 pb-3 flex items-center justify-between">
+<button aria-label="Back to time slot selection" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center text-center">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Checkout &amp; Review</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Step 2 of 2: Payment &amp; Security</span>
+</div>
+<button aria-label="Help and cancellation policy" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</button>
+</div>
+<!-- Reservation Lock Countdown Pill -->
+<div class="px-margin mb-3">
+<div class="bg-secondary-container/60 rounded-xl px-3.5 py-2.5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="font-label-md text-label-md text-on-secondary-container font-semibold">Slot guaranteed on grid</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-secondary-container font-bold">
+<span class="material-symbols-outlined text-[17px]">timer</span>
+<span id="slot-timer">08:42</span>
+</div>
+</div>
+</div>
+<!-- Main Scrollable Flow -->
+<div class="px-margin flex flex-col gap-4 pb-28">
+<!-- Section 1: Reservation Summary Card -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 shadow-[0_10px_30px_-8px_rgba(23,25,28,0.06)] flex flex-col gap-3.5">
+<div class="flex items-start justify-between gap-3">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/40 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]">ev_station</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Sharma Villa P2P Charger</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Indiranagar, Bengaluru • Host: Rajesh S.</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 bg-primary/10 text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full shrink-0 font-semibold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+          Superhost
+        </span>
+</div>
+<!-- Station Image Snippet & Key Tags -->
+<div class="relative w-full h-24 rounded-2xl overflow-hidden shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Quiet upscale Bangalore residential stilt parking with sleek Wallbox EV charging point, polished granite flooring, leafy potted plants, warm soft daylight filtering in, premium residential charging experience in Indiranagar Bengaluru" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAcLoUu9ujdvdXl7y97IWw8XqUjeDA8dk6GHmsDlVTmHomJjfDTOqK4UgzFTocUwKmpYyvH-drJsGJNOfNt3vwqYuMAOn_MiOlwusIXIV_YuFuc8o9LfH0s7N7SIAoD3IqhGzGXVOsSNSzTe17232PPE02VATymMdO7l7oQTF0DAj-P1Z96MtiKOpyl396N3i7oobcgnr1Y3eNx9liFPmh8zxkZxZG2ToO4EZjFgc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent flex items-end p-2.5">
+<span class="text-white font-label-sm text-label-sm px-2 py-0.5 rounded-md bg-inverse-surface/40 backdrop-blur-md">Covered Bay #3 • Stilt Floor</span>
+</div>
+</div>
+<!-- Grid Details -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="bg-surface-container-low rounded-xl p-2.5 flex flex-col">
+<div class="flex items-center gap-1 text-tertiary mb-0.5">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+<span class="font-label-sm text-label-sm">Reserved Slot</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Today, 24 Oct</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">1:00 PM – 3:00 PM (2 hrs)</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-2.5 flex flex-col">
+<div class="flex items-center gap-1 text-tertiary mb-0.5">
+<span class="material-symbols-outlined text-[15px]">directions_car</span>
+<span class="font-label-sm text-label-sm">Registered EV</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">Tata Nexon EV Max</span>
+<span class="font-body-sm text-body-sm text-tertiary font-medium">KA 03 MM 8821</span>
+</div>
+</div>
+<!-- Power specs & compatibility indicator -->
+<div class="flex items-center justify-between bg-surface-container-low/60 rounded-xl px-3 py-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">7.4 kW AC • Type-2 Connector</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% Match
+        </span>
+</div>
+</div>
+<!-- Section 2: Transparent Fare Breakdown -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 shadow-[0_10px_30px_-8px_rgba(23,25,28,0.06)] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Fare Breakdown</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full font-medium">ClearPricing™</span>
+</div>
+<div class="flex flex-col gap-2.5 text-on-surface-variant font-body-md text-body-md">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1.5">
+<span>Base electricity (2 hrs @ ₹140/hr)</span>
+<span class="material-symbols-outlined text-[15px] text-tertiary">info</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">₹280.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1.5">
+<span>Reserved stilt parking spot</span>
+<span class="font-label-sm text-label-sm text-primary font-medium bg-primary/10 px-1.5 py-0.2 rounded">Host perk</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">₹0.00 (Free)</span>
+</div>
+<div class="flex justify-between items-center">
+<span>Platform &amp; Green Grid safety</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">₹20.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span>GST (18% on convenience fee)</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">₹3.60</span>
+</div>
+</div>
+<div class="h-px bg-surface-container my-0.5"></div>
+<div class="flex justify-between items-baseline">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Total Payable</span>
+<span class="font-label-sm text-label-sm text-tertiary">Rounded from ₹303.60 • All taxes incl.</span>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">₹304</span>
+</div>
+</div>
+<!-- Trust cancellation badge -->
+<div class="bg-surface-container-low rounded-xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Free Cancellation Guarantee</span>
+<span class="font-body-sm text-body-sm text-tertiary">100% instant refund if cancelled before 12:00 PM today (1 hr before start).</span>
+</div>
+</div>
+</div>
+<!-- Section 3: Indian Payment Rails Selection -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 shadow-[0_10px_30px_-8px_rgba(23,25,28,0.06)] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[22px]">account_balance_wallet</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Payment Method</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">RBI Mandate Compliant</span>
+</div>
+<!-- Payment Option 1: Instant UPI (Selected Default) -->
+<div class="bg-primary/5 rounded-2xl p-3.5 flex flex-col gap-2.5 cursor-pointer shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold font-label-md text-label-md shadow-sm">
+              UPI
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">UPI Instant Checkout</span>
+<span class="font-label-sm text-label-sm bg-primary text-white px-1.5 py-0.2 rounded font-medium">Recommended</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Google Pay, PhonePe, Paytm, BHIM</span>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-2.5 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-label-md text-label-md text-on-surface font-medium truncate">gaurav.kumar@okhdfcbank</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary font-semibold hover:underline" type="button">Change</button>
+</div>
+</div>
+<!-- Payment Option 2: EV Mobility Wallet / Fastag Balance -->
+<div class="bg-surface-container-low rounded-2xl p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/70 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">toll</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">FMC EV Green Wallet / Fastag</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Available balance: ₹450.00</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Payment Option 3: Credit / Debit Cards -->
+<div class="bg-surface-container-low rounded-2xl p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Cards (Visa, Mastercard, RuPay)</span>
+<span class="font-body-sm text-body-sm text-tertiary">HDFC Regalia •••• 9012</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Payment Option 4: Netbanking -->
+<div class="bg-surface-container-low rounded-2xl p-3.5 flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Net Banking</span>
+<span class="font-body-sm text-body-sm text-tertiary">All major Indian banks (SBI, ICICI, Axis)</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- Section 4: Privacy & Arrival Lock Disclosure -->
+<div class="bg-surface-container-low rounded-2xl p-3.5 flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">key</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Private Host Security Protocol</span>
+<span class="font-body-sm text-body-sm text-tertiary leading-relaxed">
+          For host resident safety, the exact villa gate intercom access code and bay barrier release unlock immediately once payment confirmation is finalized.
+        </span>
+</div>
+</div>
+</div>
+<!-- Primary Sticky Bottom Action Pill Bar -->
+<div class="fixed bottom-20 left-0 right-0 z-40 px-margin pointer-events-none pb-safe">
+<div class="pointer-events-auto max-w-sm mx-auto bg-surface-container-lowest/90 backdrop-blur-2xl rounded-[26px] p-3 shadow-[0_20px_40px_-6px_rgba(23,25,28,0.18)] flex items-center justify-between gap-3">
+<div class="flex flex-col pl-2">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">To Pay</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">₹304</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">/ 2 hrs</span>
+</div>
+</div>
+<button class="flex-1 h-[52px] bg-primary-container text-white font-label-lg text-label-lg rounded-[18px] font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(52,199,89,0.35)] active:scale-95 transition-all" id="pay-button" type="button">
+<span>Pay ₹304 &amp; Confirm</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Interactive Confirmation Sheet Overlay (Triggered by Button, visible initially hidden or openable) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-md flex flex-col justify-end transition-opacity duration-300 opacity-0 pointer-events-none" id="confirmation-sheet">
+<div class="bg-surface-container-lowest rounded-t-[32px] max-w-md mx-auto w-full p-6 shadow-2xl flex flex-col gap-4 transform translate-y-full transition-transform duration-300 max-h-[813px] overflow-y-auto" id="confirmation-content">
+<!-- Top Drag Handle -->
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full mx-auto mb-1"></div>
+<!-- Success Animation Badge -->
+<div class="flex flex-col items-center text-center gap-2">
+<div class="relative w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center text-primary shadow-[0_0_30px_rgba(52,199,89,0.35)] mb-1">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Booking Confirmed!</span>
+<div class="inline-flex items-center gap-2 bg-secondary-container/50 px-3 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-on-secondary-container font-semibold">Ref: #FMC-8924BLR</span>
+<span class="w-1 h-1 rounded-full bg-on-secondary-container"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Paid ₹304</span>
+</div>
+</div>
+<!-- Access Granted Details Card -->
+<div class="bg-surface-container-low rounded-[22px] p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">lock_open</span>
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Bay Access Unlocked</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-full">Active Today</span>
+</div>
+<!-- Pin Reveal Highlight -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex items-center justify-between shadow-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary">Intercom Gate PIN</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-wider">PIN 4892</span>
+</div>
+<button aria-label="Copy pin" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-secondary active:scale-90" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+<!-- Exact Full Address -->
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-tertiary">Exact Address</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Villa #14B, 12th Main, HAL 2nd Stage</span>
+<span class="font-body-sm text-body-sm text-tertiary">Indiranagar, Bengaluru, Karnataka 560038</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Designated Bay: Covered Stilt Bay #3</span>
+</div>
+</div>
+<!-- Host Direct Comms Pill -->
+<div class="bg-surface-container-lowest rounded-2xl p-3 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center font-bold text-secondary font-label-lg text-label-lg">
+            RS
+          </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Rajesh Sharma</span>
+<span class="font-body-sm text-body-sm text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Online • Notified of your arrival
+            </span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Call host" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-secondary hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button aria-label="Chat host" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-secondary hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2.5 pt-1">
+<button class="w-full h-[50px] bg-primary text-white rounded-2xl font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+          Start Turn-by-Turn Navigation
+        </button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-11 bg-surface-container rounded-xl font-label-md text-label-md text-on-surface font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">event</span>
+            Add to Calendar
+          </button>
+<button class="h-11 bg-surface-container rounded-xl font-label-md text-label-md text-secondary font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-colors" id="close-modal-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+            View in Bookings
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // 1. Timer countdown simulation
+    var timerEl = document.getElementById('slot-timer');
+    if (timerEl) {
+      var totalSeconds = 8 * 60 + 42;
+      setInterval(function() {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          var mins = Math.floor(totalSeconds / 60);
+          var secs = totalSeconds % 60;
+          timerEl.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+      }, 1000);
+    }
+
+    // 2. Interactive Booking Confirmation Modal Trigger
+    var payBtn = document.getElementById('pay-button');
+    var sheet = document.getElementById('confirmation-sheet');
+    var content = document.getElementById('confirmation-content');
+    var closeBtn = document.getElementById('close-modal-btn');
+
+    function openModal() {
+      if (!sheet || !content) return;
+      sheet.classList.remove('opacity-0', 'pointer-events-none');
+      sheet.classList.add('opacity-100');
+      content.classList.remove('translate-y-full');
+      content.classList.add('translate-y-0');
+    }
+
+    function closeModal() {
+      if (!sheet || !content) return;
+      sheet.classList.add('opacity-0', 'pointer-events-none');
+      sheet.classList.remove('opacity-100');
+      content.classList.add('translate-y-full');
+      content.classList.remove('translate-y-0');
+    }
+
+    if (payBtn) {
+      payBtn.addEventListener('click', openModal);
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+    if (sheet) {
+      sheet.addEventListener('click', function(e) {
+        if (e.target === sheet) {
+          closeModal();
+        }
+      });
+    }
+  })();
+</script></main><div class="fixed bottom-0 w-full z-50 pointer-events-none pb-safe"><nav class="pointer-events-auto mx-auto mb-space-md max-w-sm w-[calc(100%-2.5rem)] h-16 bg-surface-container-lowest/85 backdrop-blur-xl rounded-full shadow-[0_12px_32px_-4px_rgba(23,25,28,0.08),0_2px_6px_rgba(23,25,28,0.04)] px-space-xs flex items-center justify-around" data-active-classes="text-primary bg-primary-container/15 font-semibold"><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="explore" href="#"><span class="material-symbols-outlined text-[22px]">explore</span><span class="font-label-sm text-label-sm mt-0.5">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="bookings" href="#"><span class="material-symbols-outlined text-[22px]">calendar_today</span><span class="font-label-sm text-label-sm mt-0.5">Bookings</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="my-chargers" href="#"><span class="material-symbols-outlined text-[22px]">ev_charger</span><span class="font-label-sm text-label-sm mt-0.5">Chargers</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="earnings" href="#"><span class="material-symbols-outlined text-[22px]">currency_rupee</span><span class="font-label-sm text-label-sm mt-0.5">Earnings</span></a><a class="flex flex-col items-center justify-center min-w-[52px] h-12 rounded-full px-space-xs text-on-surface-variant hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">account_circle</span><span class="font-label-sm text-label-sm mt-0.5">Profile</span></a></nav></div></body></html>
