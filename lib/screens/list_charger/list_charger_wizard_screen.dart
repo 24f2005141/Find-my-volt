@@ -364,7 +364,7 @@ class _ListChargerWizardScreenState extends State<ListChargerWizardScreen> {
               ),
               const SizedBox(height: 6),
               Text(
-                '$_selectedBrand is now LIVE at ₹${_hourlyRate.toInt()}/hr on the Finder My Charger map network!',
+                '$_selectedBrand is now LIVE at ₹${_hourlyRate.toInt()}/hr on the Find My Volt map network!',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 12, color: AppColors.tertiary),
               ),

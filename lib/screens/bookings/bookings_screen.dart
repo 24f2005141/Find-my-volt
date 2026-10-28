@@ -390,7 +390,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
                             Text(
-                              '24x7 FMC Roadside Assistance',
+                              '24x7 Find My Volt Roadside Assistance',
                               style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: AppColors.onSurface),
                             ),
                             Text(
@@ -404,7 +404,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content: Text('Dialing FMC Roadside Support Helpline (1800-VOLT-HELP)...'),
+                              content: Text('Dialing Find My Volt Roadside Support Helpline (1800-VOLT-HELP)...'),
                               behavior: SnackBarBehavior.floating,
                             ),
                           );
@@ -430,7 +430,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           title: const Text('Stop Charging Session?'),
           content: Text(
-            'The wallbox cable will be automatically unlocked and ₹${booking.currentCost.toStringAsFixed(2)} deducted from your FMC Wallet.',
+            'The wallbox cable will be automatically unlocked and ₹${booking.currentCost.toStringAsFixed(2)} deducted from your Volt Wallet.',
           ),
           actions: [
             TextButton(
@@ -443,7 +443,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                 appState.stopActiveChargingSession();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('Session Ended. Cable unlocked. ₹${booking.currentCost.toStringAsFixed(2)} billed to FMC Wallet.'),
+                    content: Text('Session Ended. Cable unlocked. ₹${booking.currentCost.toStringAsFixed(2)} billed to Volt Wallet.'),
                     behavior: SnackBarBehavior.floating,
                   ),
                 );

@@ -144,7 +144,7 @@ class _ReserveSlotScreenState extends State<ReserveSlotScreen> {
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Need help? FMC 24/7 host booking support is active.'),
+                      content: Text('Need help? Find My Volt 24/7 host booking support is active.'),
                       behavior: SnackBarBehavior.floating,
                     ),
                   );

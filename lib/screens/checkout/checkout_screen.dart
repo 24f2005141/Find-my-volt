@@ -79,7 +79,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Payment protected by 256-bit FMC Escrow Guarantee.'),
+                      content: Text('Payment protected by 256-bit Find My Volt Escrow Guarantee.'),
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
@@ -214,7 +214,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           const SizedBox(height: 6),
                           _buildCostRow('Parking Convenience Fee', station.parkingFee == 0 ? '₹0.00 (Free)' : '₹${station.parkingFee.toInt()}.00'),
                           const SizedBox(height: 6),
-                          _buildCostRow('FMC Safety & Insurance', '₹${protectionFee.toStringAsFixed(2)}'),
+                          _buildCostRow('Find My Volt Safety & Insurance', '₹${protectionFee.toStringAsFixed(2)}'),
                           if (_appliedDiscount > 0) ...[
                             const SizedBox(height: 6),
                             Row(
@@ -248,7 +248,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     ),
                     const SizedBox(height: 8),
 
-                    // FMC Wallet Tile
+                    // Volt Wallet Tile
                     GestureDetector(
                       onTap: () => setState(() => _selectedPaymentMethod = 'wallet'),
                       child: AnimatedContainer(
@@ -282,7 +282,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   Row(
                                     children: [
                                       const Text(
-                                        'FMC Fast Wallet',
+                                        'Volt Fast Wallet',
                                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColors.onSurface),
                                       ),
                                       const SizedBox(width: 6),
@@ -313,7 +313,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   appState.topUpWallet(500);
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                      content: Text('Added ₹500 to FMC Fast Wallet!'),
+                                      content: Text('Added ₹500 to Volt Fast Wallet!'),
                                       behavior: SnackBarBehavior.floating,
                                     ),
                                   );

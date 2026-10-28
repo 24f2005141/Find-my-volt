@@ -152,7 +152,7 @@ void main() {
     await tester.tap(find.text('Profile'));
     await tester.pumpAndSettle();
     expect(find.text('Vikramaditya Rao'), findsOneWidget);
-    expect(find.text('FMC Fast Wallet'), findsOneWidget);
+    expect(find.text('Volt Fast Wallet'), findsOneWidget);
     expect(find.text('Tata Nexon EV Max'), findsWidgets);
 
     // 6. Navigate back to Explore Tab
@@ -178,7 +178,7 @@ void main() {
     await tester.tap(find.text('Proceed to Checkout'));
     await tester.pumpAndSettle();
     expect(find.text('Checkout & Confirmation'), findsOneWidget);
-    expect(find.text('FMC Fast Wallet'), findsOneWidget);
+    expect(find.text('Volt Fast Wallet'), findsOneWidget);
 
     // 10. Confirm & Pay
     await tester.tap(find.textContaining('Confirm & Pay'));

@@ -42,7 +42,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Top Up FMC Fast Wallet',
+                        'Top Up Volt Fast Wallet',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.onSurface),
                       ),
                       IconButton(
@@ -122,7 +122,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           Navigator.of(ctx).pop();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('₹${selectedAmount.toInt()} successfully added to FMC Fast Wallet!'),
+                              content: Text('₹${selectedAmount.toInt()} successfully added to Volt Fast Wallet!'),
                               behavior: SnackBarBehavior.floating,
                             ),
                           );
@@ -457,7 +457,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // FMC Fast Wallet Bento Card
+                // Volt Fast Wallet Bento Card
                 Container(
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
@@ -482,7 +482,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
                           Text(
-                            'FMC Fast Wallet',
+                            'Volt Fast Wallet',
                             style: TextStyle(fontSize: 13, color: Colors.white70, fontWeight: FontWeight.w500),
                           ),
                           Icon(Icons.contactless, color: Colors.white70, size: 20),
@@ -641,11 +641,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       children: [
                         _buildAccountOption(Icons.payment, 'Payment Methods & Cards', 'HDFC Credit Card ending in 4102'),
                         const Divider(height: 1),
-                        _buildAccountOption(Icons.nfc, 'FMC Tap-to-Charge RFID Card', 'Linked: Active (Card #88921)'),
+                        _buildAccountOption(Icons.nfc, 'Find My Volt Tap-to-Charge RFID Card', 'Linked: Active (Card #88921)'),
                         const Divider(height: 1),
                         _buildAccountOption(Icons.verified_user_outlined, 'KYC & Driver Verification', 'Aadhaar & DL Verified'),
                         const Divider(height: 1),
-                        _buildAccountOption(Icons.help_center_outlined, 'FMC Help Center & FAQ', '24x7 Driver & Host Support Desk'),
+                        _buildAccountOption(Icons.help_center_outlined, 'Find My Volt Help Center & FAQ', '24x7 Driver & Host Support Desk'),
                         const Divider(height: 1),
                         ListTile(
                           leading: const Icon(Icons.logout, color: AppColors.error),

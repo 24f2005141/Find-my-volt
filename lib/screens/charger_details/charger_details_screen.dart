@@ -566,7 +566,7 @@ class _ChargerDetailsScreenState extends State<ChargerDetailsScreen> {
                           const SizedBox(height: 6),
                           _PriceRow(label: 'Parking Convenience Fee', value: station.parkingFee == 0 ? '₹0.00 (Free)' : '₹${station.parkingFee.toStringAsFixed(2)}'),
                           const SizedBox(height: 6),
-                          const _PriceRow(label: 'FMC Platform Security & Insurance', value: 'Included'),
+                          const _PriceRow(label: 'Find My Volt Platform Security & Insurance', value: 'Included'),
                           const SizedBox(height: 6),
                           const _PriceRow(label: 'Taxes (GST 18%)', value: 'Included'),
                         ],

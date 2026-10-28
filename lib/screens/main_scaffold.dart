@@ -48,7 +48,7 @@ class _MainScaffoldState extends State<MainScaffold> {
       case 4:
         return 'User Profile';
       default:
-        return 'Finder My Charger';
+        return 'Find My Volt';
     }
   }
 
@@ -58,7 +58,7 @@ class _MainScaffoldState extends State<MainScaffold> {
       case 3:
         return 'Host Mode';
       default:
-        return 'Finder My Charger';
+        return 'Find My Volt';
     }
   }
 
