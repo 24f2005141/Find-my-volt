@@ -6,6 +6,7 @@ import 'screens/reserve_slot/reserve_slot_screen.dart';
 import 'screens/checkout/checkout_screen.dart';
 import 'screens/list_charger/list_charger_wizard_screen.dart';
 import 'screens/availability_calendar/availability_calendar_screen.dart';
+import 'screens/auth/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,12 +19,14 @@ class FindMyVoltApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Finder My Charger',
+      title: 'Find My Volt',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
+        '/login': (context) => const LoginScreen(),
         '/': (context) => const MainScaffold(),
+        '/home': (context) => const MainScaffold(),
         '/charger-details': (context) => const ChargerDetailsScreen(),
         '/reserve-slot': (context) => const ReserveSlotScreen(),
         '/checkout': (context) => const CheckoutScreen(),

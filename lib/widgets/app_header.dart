@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
+import '../state/app_state.dart';
 
 class AppHeader extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -113,35 +114,55 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                 const SizedBox(width: 4),
                 GestureDetector(
                   onTap: onProfileTap,
-                  child: Container(
-                    width: 34,
-                    height: 34,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: AppColors.primaryContainer.withValues(alpha: 0.4),
-                        width: 2,
-                      ),
-                    ),
-                    child: ClipOval(
-                      child: Image.network(
-                        'https://lh3.googleusercontent.com/aida-public/AB6AXuCO5ZiPaX53wSN6udXYa7Wl7PDaKJKd83ZvIKL75YYh1nPubpsTqdkNMUGMOcyrRLEkvU9gkZksTPEnoRYRBB1AIPn7Bz6IcsbtmdF6mcvJb9VoaW-vcMuDO1cGeLi8xH2aC6BoVZIglp3SqggfoLRPcTsbmjfIFEezuEHGYPZ5TNCKOJ5Y363OP3TKMNZkOTBFbr8pCG2KlB-mKZ1FB7P0aR8qNXJtd4I3i4zIFOI',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Container(
-                          color: AppColors.secondaryFixed,
-                          child: const Center(
-                            child: Text(
-                              'VR',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.secondary,
-                              ),
-                            ),
+                  child: Builder(
+                    builder: (context) {
+                      final user = AppState().currentUser;
+                      final initial = user.name.isNotEmpty ? user.name[0].toUpperCase() : 'U';
+                      return Container(
+                        width: 34,
+                        height: 34,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.primaryContainer.withValues(alpha: 0.4),
+                            width: 2,
                           ),
                         ),
-                      ),
-                    ),
+                        child: ClipOval(
+                          child: user.avatarUrl.isNotEmpty
+                              ? Image.network(
+                                  user.avatarUrl,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => Container(
+                                    color: AppColors.secondaryFixed,
+                                    child: Center(
+                                      child: Text(
+                                        initial,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.secondary,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  color: AppColors.secondaryFixed,
+                                  child: Center(
+                                    child: Text(
+                                      initial,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.secondary,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

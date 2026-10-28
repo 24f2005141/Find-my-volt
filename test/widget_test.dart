@@ -104,7 +104,7 @@ void main() {
     HttpOverrides.global = _TestHttpOverrides();
   });
 
-  testWidgets('FindMyVolt app loads and displays Explore screen', (WidgetTester tester) async {
+  testWidgets('FindMyVolt app loads Login first, then navigates to main screens upon sign in', (WidgetTester tester) async {
     tester.view.physicalSize = const Size(390 * 2, 844 * 2);
     tester.view.devicePixelRatio = 2.0;
     addTearDown(() {
@@ -113,9 +113,18 @@ void main() {
     });
 
     await tester.pumpWidget(const FindMyVoltApp());
-    await tester.pump();
+    await tester.pumpAndSettle();
 
-    // Verify main components render
+    // Verify app opens to Login Screen first
+    expect(find.text('Find My Volt'), findsOneWidget);
+    expect(find.text('Sign In / Register'), findsOneWidget);
+    expect(find.text('Sign In as Vikram (Tata Nexon EV Driver)'), findsOneWidget);
+
+    // Sign in as Vikram
+    await tester.tap(find.text('Sign In as Vikram (Tata Nexon EV Driver)'));
+    await tester.pumpAndSettle();
+
+    // Verify main components render after authentication
     expect(find.text('Explore'), findsWidgets);
     expect(find.text('Bookings'), findsWidgets);
     expect(find.text('Chargers'), findsWidgets);

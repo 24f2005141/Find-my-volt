@@ -134,7 +134,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             ],
                           ),
                           const Divider(height: 20),
-                          _buildSummaryRow(Icons.event, 'Date & Time', 'Today, 28 Oct • 12:00 - 02:00 PM (${widget.hours} hrs)'),
+                          _buildSummaryRow(Icons.event, 'Date & Time', 'Today, ${DateTime.now().day} ${_monthName(DateTime.now().month)} • 12:00 - 02:00 PM (${widget.hours} hrs)'),
                           const SizedBox(height: 8),
                           _buildSummaryRow(Icons.directions_car, 'Vehicle', '${vehicle.make} ${vehicle.model} (${vehicle.regNumber})'),
                           const SizedBox(height: 8),
@@ -506,6 +506,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         );
       },
     );
+  }
+
+  String _monthName(int month) {
+    const m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return m[(month - 1) % 12];
   }
 
   Widget _buildSummaryRow(IconData icon, String title, String value) {

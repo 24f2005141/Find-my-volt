@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/glass_container.dart';
 import '../../state/app_state.dart';
-import '../../models/models.dart';
 import '../checkout/checkout_screen.dart';
 
 class ReserveSlotScreen extends StatefulWidget {
@@ -18,13 +17,20 @@ class _ReserveSlotScreenState extends State<ReserveSlotScreen> {
   final Set<int> _selectedSlotIndices = {2, 3}; // 12:00 PM and 01:00 PM
   double _targetSoc = 85.0;
 
-  final List<Map<String, String>> _dates = [
-    {'day': 'Today', 'date': '28 Oct'},
-    {'day': 'Thu', 'date': '29 Oct'},
-    {'day': 'Fri', 'date': '30 Oct'},
-    {'day': 'Sat', 'date': '31 Oct'},
-    {'day': 'Sun', 'date': '01 Nov'},
-  ];
+  late final List<Map<String, String>> _dates = _generateUpcomingDates();
+
+  static List<Map<String, String>> _generateUpcomingDates() {
+    final now = DateTime.now();
+    final months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    final days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+    return List.generate(5, (index) {
+      final date = now.add(Duration(days: index));
+      final dayLabel = index == 0 ? 'Today' : days[date.weekday - 1];
+      final dateLabel = '${date.day.toString().padLeft(2, '0')} ${months[date.month - 1]}';
+      return {'day': dayLabel, 'date': dateLabel};
+    });
+  }
 
   final List<Map<String, dynamic>> _slots = [
     {'time': '09:00 - 10:00 AM', 'status': 'past'},

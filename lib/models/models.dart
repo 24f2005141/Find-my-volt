@@ -1,3 +1,108 @@
+double _resolveLat(String? id, double? mapX) {
+  switch (id) {
+    case 'sharma_villa':
+      return 12.9784; // Indiranagar, Bangalore
+    case 'nexus':
+      return 12.9352; // Koramangala 1st Block
+    case 'koramangala':
+      return 12.9340; // Koramangala 4th Block
+    case 'prestige_ozone':
+      return 12.9698; // Whitefield, Bangalore
+    default:
+      return 12.9716 + ((mapX ?? 0.5) - 0.5) * 0.08;
+  }
+}
+
+double _resolveLng(String? id, double? mapY) {
+  switch (id) {
+    case 'sharma_villa':
+      return 77.6408; // Indiranagar, Bangalore
+    case 'nexus':
+      return 77.6245; // Koramangala
+    case 'koramangala':
+      return 77.6180; // Koramangala
+    case 'prestige_ozone':
+      return 77.7499; // Whitefield
+    default:
+      return 77.5946 + ((mapY ?? 150.0) - 150.0) * 0.0006;
+  }
+}
+
+class UserProfile {
+  final String id;
+  final String name;
+  final String email;
+  final String phone;
+  final String avatarUrl;
+  final double walletBalance;
+  final bool isHost;
+  final String role;
+  final int totalChargingSessions;
+
+  UserProfile({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.phone,
+    this.avatarUrl = '',
+    this.walletBalance = 1450.0,
+    this.isHost = true,
+    this.role = 'PIONEER',
+    this.totalChargingSessions = 42,
+  });
+
+  factory UserProfile.fromJson(Map<String, dynamic> json) {
+    return UserProfile(
+      id: json['id'] as String? ?? 'user_vikram_01',
+      name: json['name'] as String? ?? 'Vikramaditya Rao',
+      email: json['email'] as String? ?? 'vikram@evpioneer.in',
+      phone: json['phone'] as String? ?? '+91 98450 12345',
+      avatarUrl: (json['avatarUrl'] ?? json['avatar_url']) as String? ?? '',
+      walletBalance: ((json['walletBalance'] ?? json['wallet_balance']) as num?)?.toDouble() ?? 1450.0,
+      isHost: (json['isHost'] ?? json['is_host']) == 1 || (json['isHost'] ?? json['is_host']) == true,
+      role: json['role'] as String? ?? 'PIONEER',
+      totalChargingSessions: ((json['totalChargingSessions'] ?? json['total_charging_sessions']) as num?)?.toInt() ?? 42,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'avatarUrl': avatarUrl,
+      'walletBalance': walletBalance,
+      'isHost': isHost,
+      'role': role,
+      'totalChargingSessions': totalChargingSessions,
+    };
+  }
+
+  UserProfile copyWith({
+    String? name,
+    String? email,
+    String? phone,
+    String? avatarUrl,
+    double? walletBalance,
+    bool? isHost,
+    String? role,
+    int? totalChargingSessions,
+  }) {
+    return UserProfile(
+      id: id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      walletBalance: walletBalance ?? this.walletBalance,
+      isHost: isHost ?? this.isHost,
+      role: role ?? this.role,
+      totalChargingSessions: totalChargingSessions ?? this.totalChargingSessions,
+    );
+  }
+}
+
 class ChargerStation {
   final String id;
   final String name;
@@ -27,6 +132,8 @@ class ChargerStation {
   final List<String> images;
   final double mapX;
   final double mapY;
+  final double latitude;
+  final double longitude;
 
   ChargerStation({
     required this.id,
@@ -57,11 +164,17 @@ class ChargerStation {
     required this.images,
     required this.mapX,
     required this.mapY,
-  });
+    double? latitude,
+    double? longitude,
+  })  : latitude = latitude ?? _resolveLat(id, mapX),
+        longitude = longitude ?? _resolveLng(id, mapY);
 
   factory ChargerStation.fromJson(Map<String, dynamic> json) {
+    final id = json['id'] as String? ?? '';
+    final mapX = ((json['mapX'] ?? json['map_x']) as num?)?.toDouble() ?? 0.5;
+    final mapY = ((json['mapY'] ?? json['map_y']) as num?)?.toDouble() ?? 150.0;
     return ChargerStation(
-      id: json['id'] as String? ?? '',
+      id: id,
       name: json['name'] as String? ?? '',
       hostName: (json['hostName'] ?? json['host_name']) as String? ?? 'Host',
       hostAvatar: (json['hostAvatar'] ?? json['host_avatar']) as String? ?? '',
@@ -88,8 +201,10 @@ class ChargerStation {
       compatibleVehicles: (json['compatibleVehicles'] as List<dynamic>?)?.map((e) => e.toString()).toList() ??
           (json['compatible_vehicles'] is List ? (json['compatible_vehicles'] as List).map((e) => e.toString()).toList() : []),
       images: (json['images'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
-      mapX: ((json['mapX'] ?? json['map_x']) as num?)?.toDouble() ?? 0.5,
-      mapY: ((json['mapY'] ?? json['map_y']) as num?)?.toDouble() ?? 150.0,
+      mapX: mapX,
+      mapY: mapY,
+      latitude: ((json['latitude'] ?? json['lat']) as num?)?.toDouble() ?? _resolveLat(id, mapX),
+      longitude: ((json['longitude'] ?? json['lng']) as num?)?.toDouble() ?? _resolveLng(id, mapY),
     );
   }
 
@@ -123,12 +238,16 @@ class ChargerStation {
       'images': images,
       'mapX': mapX,
       'mapY': mapY,
+      'latitude': latitude,
+      'longitude': longitude,
     };
   }
 
   ChargerStation copyWith({
     bool? isOnline,
     int? tariffPerHour,
+    double? latitude,
+    double? longitude,
   }) {
     return ChargerStation(
       id: id,
@@ -159,6 +278,8 @@ class ChargerStation {
       images: images,
       mapX: mapX,
       mapY: mapY,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
     );
   }
 }

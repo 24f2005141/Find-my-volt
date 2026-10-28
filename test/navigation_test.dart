@@ -113,11 +113,19 @@ void main() {
     });
 
     await tester.pumpWidget(const FindMyVoltApp());
-    await tester.pump();
+    await tester.pumpAndSettle();
+
+    // 0. Verify Initial Screen: Login Screen (Auth First requirement)
+    expect(find.text('Find My Volt'), findsOneWidget);
+    expect(find.text('Sign In / Register'), findsOneWidget);
+
+    // Sign in via quick demo button
+    await tester.tap(find.text('Sign In as Vikram (Tata Nexon EV Driver)'));
+    await tester.pumpAndSettle();
 
     // 1. Verify Initial Screen: Explore Map
     expect(find.text('Explore'), findsWidgets);
-    expect(find.text('Indiranagar 100ft Rd'), findsOneWidget);
+    expect(find.text('12th Main Road'), findsOneWidget);
     expect(find.text('Sharma Villa P2P Charger'), findsOneWidget);
 
     // 2. Navigate to Bookings Tab

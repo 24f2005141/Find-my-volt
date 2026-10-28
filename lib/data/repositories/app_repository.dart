@@ -4,6 +4,11 @@ import '../../services/api_service.dart';
 class AppRepository {
   final ApiService _api = ApiService();
 
+  // --- User Profile ---
+  Future<UserProfile?> getUserProfile() async {
+    return await _api.fetchUserProfile();
+  }
+
   // --- Initial Data Sync ---
   Future<List<ChargerStation>?> getStations() async {
     return await _api.fetchStations();

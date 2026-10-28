@@ -37,6 +37,19 @@ class ApiService {
   }
 
   // -------------------------------------------------------------
+  // User Profile
+  // -------------------------------------------------------------
+  Future<UserProfile?> fetchUserProfile() async {
+    try {
+      final res = await http.get(Uri.parse('$baseUrl/user')).timeout(const Duration(seconds: 3));
+      if (res.statusCode == 200) {
+        return UserProfile.fromJson(json.decode(res.body));
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  // -------------------------------------------------------------
   // Wallet
   // -------------------------------------------------------------
   Future<double?> fetchWalletBalance() async {

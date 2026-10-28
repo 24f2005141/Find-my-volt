@@ -9,6 +9,33 @@ class AppState extends ChangeNotifier {
 
   final AppRepository _repository = AppRepository();
 
+  // --- Real-time Authentication & Current User State ---
+  bool _isLoggedIn = false;
+  bool get isLoggedIn => _isLoggedIn;
+
+  UserProfile _currentUser = UserProfile(
+    id: 'user_vikram_01',
+    name: 'Vikramaditya Rao',
+    email: 'vikram@evpioneer.in',
+    phone: '+91 98450 12345',
+    walletBalance: 1450.0,
+    isHost: true,
+    role: 'PIONEER',
+  );
+  UserProfile get currentUser => _currentUser;
+
+  void login(UserProfile user) {
+    _currentUser = user;
+    _isLoggedIn = true;
+    syncFromBackend();
+    notifyListeners();
+  }
+
+  void logout() {
+    _isLoggedIn = false;
+    notifyListeners();
+  }
+
   AppState._internal() {
     _initDefaultData();
     _startRealtimeChargingSimulation();
@@ -39,7 +66,7 @@ class AppState extends ChangeNotifier {
   String _searchQuery = '';
   String get searchQuery => _searchQuery;
 
-  String _selectedFilter = 'All (24)';
+  String _selectedFilter = 'All';
   String get selectedFilter => _selectedFilter;
 
   void setSearchQuery(String query) {
@@ -60,6 +87,10 @@ class AppState extends ChangeNotifier {
         final matchesAddress = station.address.toLowerCase().contains(q);
         final matchesConnector = station.connectorType.toLowerCase().contains(q);
         if (!matchesName && !matchesAddress && !matchesConnector) return false;
+      }
+
+      if (_selectedFilter == 'All' || _selectedFilter.startsWith('All')) {
+        return true;
       }
 
       if (_selectedFilter == 'Home P2P' && !station.name.contains('P2P') && !station.name.contains('Resident')) {
@@ -347,10 +378,17 @@ class AppState extends ChangeNotifier {
   // --- Synchronization with Backend SQLite REST API ---
   Future<void> syncFromBackend() async {
     try {
+      // 0. Sync user profile
+      final remoteUser = await _repository.getUserProfile();
+      if (remoteUser != null) {
+        _currentUser = remoteUser;
+      }
+
       // 1. Sync wallet
       final remoteWallet = await _repository.getWalletBalance();
       if (remoteWallet != null) {
         _walletBalance = remoteWallet;
+        _currentUser = _currentUser.copyWith(walletBalance: remoteWallet);
       }
 
       // 2. Sync stations

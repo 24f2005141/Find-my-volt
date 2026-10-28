@@ -305,6 +305,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         final appState = AppState();
         final vehicles = appState.vehicles;
         final walletBalance = appState.walletBalance;
+        final user = appState.currentUser;
 
         return Scaffold(
           backgroundColor: AppColors.background,
@@ -373,16 +374,29 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               ),
                             ),
                             child: ClipOval(
-                              child: Image.network(
-                                'https://lh3.googleusercontent.com/aida-public/AB6AXuCO5ZiPaX53wSN6udXYa7Wl7PDaKJKd83ZvIKL75YYh1nPubpsTqdkNMUGMOcyrRLEkvU9gkZksTPEnoRYRBB1AIPn7Bz6IcsbtmdF6mcvJb9VoaW-vcMuDO1cGeLi8xH2aC6BoVZIglp3SqggfoLRPcTsbmjfIFEezuEHGYPZ5TNCKOJ5Y363OP3TKMNZkOTBFbr8pCG2KlB-mKZ1FB7P0aR8qNXJtd4I3i4zIFOI',
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) => Container(
-                                  color: AppColors.secondaryFixed,
-                                  child: const Center(
-                                    child: Text('VR', style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.secondary)),
-                                  ),
-                                ),
-                              ),
+                              child: user.avatarUrl.isNotEmpty
+                                  ? Image.network(
+                                      user.avatarUrl,
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (context, error, stackTrace) => Container(
+                                        color: AppColors.secondaryFixed,
+                                        child: Center(
+                                          child: Text(
+                                            user.name.isNotEmpty ? user.name[0] : 'U',
+                                            style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.secondary),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      color: AppColors.secondaryFixed,
+                                      child: Center(
+                                        child: Text(
+                                          user.name.isNotEmpty ? user.name[0] : 'U',
+                                          style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.secondary),
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                           const SizedBox(width: 14),
@@ -392,9 +406,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               children: [
                                 Row(
                                   children: [
-                                    const Text(
-                                      'Vikramaditya Rao',
-                                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: AppColors.onSurface),
+                                    Flexible(
+                                      child: Text(
+                                        user.name,
+                                        style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: AppColors.onSurface),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
                                     const SizedBox(width: 6),
                                     Container(
@@ -403,26 +420,30 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                         color: AppColors.primaryContainer.withOpacity(0.2),
                                         borderRadius: BorderRadius.circular(6),
                                       ),
-                                      child: const Text(
-                                        'PIONEER',
-                                        style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: AppColors.primary),
+                                      child: Text(
+                                        user.role.toUpperCase(),
+                                        style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: AppColors.primary),
                                       ),
                                     ),
                                   ],
                                 ),
                                 const SizedBox(height: 2),
-                                const Text(
-                                  '+91 98450 12345 • vikram@evpioneer.in',
-                                  style: TextStyle(fontSize: 11, color: AppColors.tertiary),
+                                Text(
+                                  '${user.phone} • ${user.email}',
+                                  style: const TextStyle(fontSize: 11, color: AppColors.tertiary),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 const SizedBox(height: 4),
                                 Row(
-                                  children: const [
-                                    Icon(Icons.energy_savings_leaf, size: 13, color: AppColors.primary),
-                                    SizedBox(width: 4),
-                                    Text(
-                                      '42 Trips • 840 kg CO2 Offset',
-                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.secondary),
+                                  children: [
+                                    const Icon(Icons.energy_savings_leaf, size: 13, color: AppColors.primary),
+                                    const SizedBox(width: 4),
+                                    Flexible(
+                                      child: Text(
+                                        '${user.totalChargingSessions} Trips • ${(user.totalChargingSessions * 20)} kg CO2 Offset',
+                                        style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.secondary),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -629,10 +650,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         ListTile(
                           leading: const Icon(Icons.logout, color: AppColors.error),
                           title: const Text('Sign Out', style: TextStyle(color: AppColors.error, fontWeight: FontWeight.bold, fontSize: 13)),
+                          subtitle: Text('Signed in as ${user.name} (${user.phone})', style: const TextStyle(fontSize: 11, color: AppColors.tertiary)),
                           onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Signed out of Vikramaditya Rao')),
-                            );
+                            appState.logout();
+                            Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
                           },
                         ),
                       ],

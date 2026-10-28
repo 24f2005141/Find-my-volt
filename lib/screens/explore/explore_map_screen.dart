@@ -3,7 +3,7 @@ import '../../theme/app_colors.dart';
 import '../../widgets/glass_container.dart';
 import '../../state/app_state.dart';
 import '../../models/models.dart';
-import 'widgets/map_canvas_widget.dart';
+import 'widgets/open_street_map_widget.dart';
 import '../charger_details/charger_details_screen.dart';
 import '../reserve_slot/reserve_slot_screen.dart';
 
@@ -23,7 +23,7 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   final List<Map<String, dynamic>> _filters = [
-    {'label': 'All (24)', 'icon': Icons.bolt},
+    {'label': 'All', 'icon': Icons.bolt},
     {'label': 'Home P2P', 'icon': Icons.home_outlined},
     {'label': 'CCS2 60kW+', 'icon': Icons.flash_on},
     {'label': 'Type 2 AC', 'icon': Icons.ev_station},
@@ -71,9 +71,9 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
                         width: double.infinity,
                         child: Stack(
                           children: [
-                            // Map Canvas
+                            // Map Canvas (OpenStreetMap India)
                             Positioned.fill(
-                              child: MapCanvasWidget(
+                              child: OpenStreetMapWidget(
                                 selectedPin: appState.selectedStationId,
                                 onPinSelected: (pin) {
                                   appState.selectStation(pin);
@@ -106,13 +106,15 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
                                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.min,
-                                            children: const [
-                                              Icon(Icons.near_me, color: AppColors.primary, size: 16),
-                                              SizedBox(width: 4),
+                                            children: [
+                                              const Icon(Icons.near_me, color: AppColors.primary, size: 16),
+                                              const SizedBox(width: 4),
                                               Flexible(
                                                 child: Text(
-                                                  'Indiranagar 100ft Rd',
-                                                  style: TextStyle(
+                                                  selectedStation.address.isNotEmpty
+                                                      ? selectedStation.address.split(',').first
+                                                      : 'Indiranagar 100ft Rd',
+                                                  style: const TextStyle(
                                                     fontSize: 12,
                                                     fontWeight: FontWeight.w600,
                                                     color: AppColors.onSurface,
@@ -120,8 +122,8 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
                                                   overflow: TextOverflow.ellipsis,
                                                 ),
                                               ),
-                                              SizedBox(width: 2),
-                                              Icon(Icons.expand_more, color: AppColors.tertiary, size: 16),
+                                              const SizedBox(width: 2),
+                                              const Icon(Icons.expand_more, color: AppColors.tertiary, size: 16),
                                             ],
                                           ),
                                         ),
@@ -280,22 +282,6 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
                                       }).toList(),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-
-                            // Floating Map Controls HUD (Right-side)
-                            Positioned(
-                              right: 16,
-                              bottom: 24,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  _buildMapHudButton('3D', isText: true),
-                                  const SizedBox(height: 8),
-                                  _buildMapHudButton(Icons.layers_outlined),
-                                  const SizedBox(height: 8),
-                                  _buildMapHudButton(Icons.my_location, isPrimary: true),
                                 ],
                               ),
                             ),
@@ -755,41 +741,6 @@ class _ExploreMapScreenState extends State<ExploreMapScreen> {
           ),
         );
       },
-    );
-  }
-
-  Widget _buildMapHudButton(dynamic content, {bool isText = false, bool isPrimary = false}) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.92),
-        shape: BoxShape.circle,
-        border: isPrimary ? Border.all(color: AppColors.primaryContainer.withOpacity(0.5), width: 1.5) : null,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Center(
-        child: isText
-            ? Text(
-                content as String,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.onSurface,
-                ),
-              )
-            : Icon(
-                content as IconData,
-                size: 19,
-                color: isPrimary ? AppColors.primary : AppColors.onSurface,
-              ),
-      ),
     );
   }
 
